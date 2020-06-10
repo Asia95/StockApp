@@ -1,0 +1,23 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: demo
+  main:
+    web-application-type: reactive
+
+sidecar:
+  port: 5000
+  health-uri: http://localhost:5000/health.json
+  hostname: localhost
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+#Hystrix timeout configuration
+hystrix:
+  command.default.execution.timeout.enabled: false
+  command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
